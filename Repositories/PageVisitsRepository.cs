@@ -1,10 +1,11 @@
 ﻿using CloudResumeChallengeAPI.Data;
 using CloudResumeChallengeAPI.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CloudResumeChallengeAPI.Repositories
 {
-    public class PageVisitsRepository
+    public class PageVisitsRepository : IPageVisitsRepository
     {
         private readonly DataContext _context;
         public PageVisitsRepository(DataContext context)
@@ -17,7 +18,7 @@ namespace CloudResumeChallengeAPI.Repositories
             return await _context.PageVisits.ToListAsync();
         }
 
-        public void CreatePageVisit()
+        public async Task CreatePageVisit()
         {
             PageVisits pageVisits = new PageVisits()
             {
@@ -26,7 +27,7 @@ namespace CloudResumeChallengeAPI.Repositories
             };
 
             _context.PageVisits.Add(pageVisits);
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
     }
 }
