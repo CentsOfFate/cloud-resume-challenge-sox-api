@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<DataContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DataContext") ?? throw new InvalidOperationException("Connection string 'DataContext' not found.")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DataContext")));
 
 builder.Services.AddScoped<IDataContext>(provider => provider.GetService<DataContext>());
 builder.Services.AddScoped<IPageVisitsRepository, PageVisitsRepository>();

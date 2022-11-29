@@ -21,7 +21,7 @@ namespace CloudResumeChallengeAPI.Data
                    .SetBasePath(Directory.GetCurrentDirectory())
                    .AddJsonFile("appsettings.json")
                    .Build();
-                var connectionString = configuration.GetConnectionString("API");
+                var connectionString = configuration.GetConnectionString("DataContext");
                 optionsBuilder.UseSqlite(connectionString);
             }
         }
