@@ -13,7 +13,5 @@ namespace CloudResumeChallengeAPI.Data
             : base(options)
         {
         }
-
-        public DbSet<PageVisits> PageVisits { get; set; }
     }
 }
