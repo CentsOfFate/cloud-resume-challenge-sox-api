@@ -3,13 +3,15 @@ using CloudResumeChallengeAPI.Models;
 
 namespace CloudResumeChallengeAPI.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IDataContext
     {
-        public DataContext(DbContextOptions<DataContext> options)
-            : base(options)
+        public DataContext()
         {
         }
 
-        public DbSet<PageVisits> PageVisits { get; set; }
+        public DataContext(DbContextOptions<IDataContext> options)
+            : base(options)
+        {
+        }
     }
 }
